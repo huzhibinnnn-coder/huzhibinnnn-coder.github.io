@@ -165,11 +165,11 @@
     ["github", "website", "bilibili", "linkedin", "artstation"].forEach((field) => {
       $(`#profile-${field}-input`).addEventListener("input", () => { state.dirty = true; });
     });
-    $("#profile-avatar-file").addEventListener("change", (event) => {
+    $("#profile-avatar-file").addEventListener("change", async (event) => {
       const file = event.target.files[0];
       if (!file) return;
       try {
-        const asset = queueFile(file);
+        const asset = queueFile(await optimizeImageFile(file, 512, 512, 0.82));
         state.data.profile.avatar = asset.url;
         $("#avatar-preview").src = asset.preview;
         state.dirty = true;
@@ -269,12 +269,12 @@
     ["work-title", "work-category", "work-date", "work-tags", "work-description"].forEach((id) => {
       $("#" + id).addEventListener("input", () => { state.dirty = true; });
     });
-    $("#work-cover-file").addEventListener("change", (event) => {
+    $("#work-cover-file").addEventListener("change", async (event) => {
       const file = event.target.files[0];
       const work = selectedWork();
       if (!file || !work) return;
       try {
-        const asset = queueFile(file);
+        const asset = queueFile(await optimizeImageFile(file, 960, 540, 0.78));
         work.cover = asset.url;
         $("#work-cover-preview").src = asset.preview;
         state.dirty = true;
@@ -477,6 +477,45 @@
     const item = { file, url, path: `dist/${url}`, preview: URL.createObjectURL(file) };
     state.pending.set(url, item);
     return item;
+  }
+
+  function optimizeImageFile(file, targetWidth, targetHeight, quality) {
+    if (!file.type.startsWith("image/")) return Promise.reject(new Error("请选择图片文件。"));
+    return new Promise((resolve, reject) => {
+      const objectUrl = URL.createObjectURL(file);
+      const image = new Image();
+      image.onload = () => {
+        try {
+          const canvas = document.createElement("canvas");
+          canvas.width = targetWidth;
+          canvas.height = targetHeight;
+          const context = canvas.getContext("2d", { alpha: false });
+          context.fillStyle = "#080d18";
+          context.fillRect(0, 0, targetWidth, targetHeight);
+          const scale = Math.max(targetWidth / image.naturalWidth, targetHeight / image.naturalHeight);
+          const width = image.naturalWidth * scale;
+          const height = image.naturalHeight * scale;
+          context.drawImage(image, (targetWidth - width) / 2, (targetHeight - height) / 2, width, height);
+          canvas.toBlob((blob) => {
+            URL.revokeObjectURL(objectUrl);
+            if (!blob) {
+              reject(new Error("封面压缩失败，请更换图片后重试。"));
+              return;
+            }
+            const baseName = file.name.replace(/\.[^.]+$/, "").replace(/[^a-z0-9-]+/gi, "-") || "cover";
+            resolve(new File([blob], `${baseName}.jpg`, { type: "image/jpeg", lastModified: Date.now() }));
+          }, "image/jpeg", quality);
+        } catch (error) {
+          URL.revokeObjectURL(objectUrl);
+          reject(error);
+        }
+      };
+      image.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error("无法读取这张图片，请更换文件后重试。"));
+      };
+      image.src = objectUrl;
+    });
   }
 
   async function publishAll() {

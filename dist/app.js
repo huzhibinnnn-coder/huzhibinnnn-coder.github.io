@@ -150,11 +150,8 @@
         empty.textContent = "作品正在整理中";
         grid.append(empty);
       } else {
-        works.forEach((work, index) => {
-          const card = createWorkCard(work, category);
-          if (index >= 4 && !state.expanded.has(category.id)) card.hidden = true;
-          grid.append(card);
-        });
+        const visibleWorks = state.expanded.has(category.id) ? works : works.slice(0, 4);
+        visibleWorks.forEach((work) => grid.append(createWorkCard(work, category)));
       }
       section.append(heading, grid);
       container.append(section);
@@ -240,8 +237,8 @@
 
     const gallery = $("#dialog-media");
     gallery.replaceChildren();
-    (work.media || []).forEach((media) => gallery.append(createMediaItem(media, work.title)));
-    if (!(work.media || []).length && work.cover) gallery.append(createMediaItem({ type: "image", url: work.cover, caption: work.title }, work.title));
+    (work.media || []).forEach((media) => gallery.append(createMediaItem(media, work.title, work.cover)));
+    if (!(work.media || []).length && work.cover) gallery.append(createMediaItem({ type: "image", url: work.cover, caption: work.title }, work.title, work.cover));
 
     const files = $("#dialog-files");
     files.replaceChildren();
@@ -258,21 +255,18 @@
     $("#work-dialog").showModal();
   }
 
-  function createMediaItem(media, fallbackTitle) {
+  function createMediaItem(media, fallbackTitle, posterUrl) {
     const figure = document.createElement("figure");
     figure.className = "media-item";
     let element;
     if (media.type === "video") {
-      element = document.createElement("video");
-      element.controls = true;
-      element.preload = "metadata";
-      element.playsInline = true;
+      element = createDeferredVideo(media, fallbackTitle, posterUrl);
     } else {
       element = document.createElement("img");
       element.loading = "lazy";
       element.alt = media.caption || fallbackTitle;
+      element.src = normalizeAssetUrl(media.url);
     }
-    element.src = normalizeAssetUrl(media.url);
     figure.append(element);
     if (media.caption) {
       const caption = document.createElement("figcaption");
@@ -280,6 +274,48 @@
       figure.append(caption);
     }
     return figure;
+  }
+
+  function createDeferredVideo(media, fallbackTitle, posterUrl) {
+    const shell = document.createElement("div");
+    shell.className = "deferred-video";
+    const poster = document.createElement("img");
+    poster.src = normalizeAssetUrl(posterUrl);
+    poster.alt = `${fallbackTitle}视频封面`;
+    poster.loading = "lazy";
+    const button = document.createElement("button");
+    button.className = "video-play-button";
+    button.type = "button";
+    button.setAttribute("aria-label", `加载并播放视频：${media.caption || fallbackTitle}`);
+    const icon = document.createElement("span");
+    icon.className = "play-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "▶";
+    const label = document.createElement("span");
+    label.textContent = "点击播放视频";
+    button.append(icon, label);
+    shell.append(poster, button);
+
+    button.addEventListener("click", () => {
+      button.disabled = true;
+      label.textContent = "正在加载视频…";
+      const video = document.createElement("video");
+      video.controls = true;
+      video.preload = "none";
+      video.playsInline = true;
+      video.poster = normalizeAssetUrl(posterUrl);
+      video.src = normalizeAssetUrl(media.url);
+      video.setAttribute("aria-label", media.caption || fallbackTitle);
+      video.addEventListener("error", () => {
+        shell.replaceChildren(poster, button);
+        button.disabled = false;
+        label.textContent = "加载失败，点击重试";
+      }, { once: true });
+      shell.replaceChildren(video);
+      video.load();
+      video.play().catch(() => {});
+    });
+    return shell;
   }
 
   function bindPageEvents() {
