@@ -31,7 +31,7 @@
             <input id="token-input" name="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required />
             <button class="button primary" type="submit">验证并进入</button>
           </div>
-          <p class="form-hint">密钥只需授权此仓库的 Contents：Read and write。<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">创建密钥 ↗</a></p>
+          <p class="form-hint">创建 Fine-grained token 时：① Repository access 选择 <strong>Only select repositories</strong> 并勾选 <strong>huzhibinnnn-coder.github.io</strong>；② Repository permissions 将 <strong>Contents</strong> 设为 <strong>Read and write</strong>。无需勾选其他权限。<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">创建新密钥 ↗</a></p>
           <p class="form-error" id="login-error" role="alert"></p>
         </form>
       </section>

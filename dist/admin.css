@@ -84,7 +84,8 @@ textarea { resize: vertical; }
 .token-row { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem; }
 .form-hint { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.55; }
 .form-hint a { color: var(--primary); }
-.form-error { min-height: 1.2rem; margin: 0.7rem 0 0; color: var(--danger); font-size: 0.77rem; }
+.form-hint strong { color: var(--text); font-weight: 650; }
+.form-error { min-height: 1.2rem; margin: 0.7rem 0 0; color: var(--danger); font-size: 0.77rem; line-height: 1.65; white-space: pre-line; }
 
 .editor-shell { min-height: calc(100vh - 4rem); display: grid; grid-template-columns: 15rem minmax(0, 1fr); }
 .editor-sidebar { position: sticky; top: 4rem; height: calc(100vh - 4rem); display: flex; flex-direction: column; padding: 1.2rem; border-right: 1px solid var(--line); background: #0b1323; }
@@ -93,7 +94,7 @@ textarea { resize: vertical; }
 .nav-item:hover, .nav-item.active { background: var(--surface); color: var(--text); }
 .publish-box { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); }
 .publish-box > p:first-child { margin: 0 0 0.7rem; color: var(--muted); font-size: 0.73rem; }
-.publish-status { min-height: 2.2rem; margin: 0.55rem 0 0; color: var(--muted); font-size: 0.7rem; line-height: 1.5; }
+.publish-status { min-height: 2.2rem; margin: 0.55rem 0 0; color: var(--muted); font-size: 0.7rem; line-height: 1.5; white-space: pre-line; }
 .publish-status.success { color: #4ade80; }
 .publish-status.error { color: var(--danger); }
 .editor-content { min-width: 0; padding: 2rem clamp(1rem, 4vw, 3.5rem) 5rem; }

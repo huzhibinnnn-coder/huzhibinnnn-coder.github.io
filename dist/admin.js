@@ -56,7 +56,8 @@
           github(`/repos/${OWNER}/${REPO}`),
         ]);
         if (String(user.login).toLowerCase() !== OWNER.toLowerCase()) throw new Error("该密钥不属于网站所有者账号。请使用你自己的 GitHub 账号密钥。");
-        if (!(repository.permissions?.push || repository.permissions?.admin || repository.permissions?.maintain)) throw new Error("该密钥没有此仓库的写入权限，请为 Contents 开启 Read and write。");
+        if (!(repository.permissions?.push || repository.permissions?.admin || repository.permissions?.maintain)) throw new Error("当前 GitHub 账号没有此仓库的写入权限。");
+        await verifyTokenWriteAccess();
         await loadRepositoryData();
         openEditor(user.login);
       } catch (caught) {
@@ -75,6 +76,13 @@
     if (!file.content) throw new Error("无法读取作品集数据文件。");
     state.data = normalizeData(JSON.parse(decodeBase64(file.content)));
     state.dataSha = file.sha;
+  }
+
+  async function verifyTokenWriteAccess() {
+    await github(`/repos/${OWNER}/${REPO}/git/blobs`, {
+      method: "POST",
+      body: { content: encodeBase64("portfolio-admin-permission-check"), encoding: "base64" },
+    });
   }
 
   function normalizeData(raw) {
@@ -483,15 +491,37 @@
       const draft = clone(state.data);
       const referenced = collectAssetUrls(draft);
       const uploads = [...state.pending.values()].filter((item) => referenced.has(item.url));
+      const treeEntries = [];
       for (let index = 0; index < uploads.length; index += 1) {
         const item = uploads[index];
-        status.textContent = `正在上传文件 ${index + 1}/${uploads.length}：${item.file.name}`;
-        await putFile(item.path, await fileToBase64(item.file), `上传作品素材：${item.file.name}`);
+        status.textContent = `正在准备文件 ${index + 1}/${uploads.length}：${item.file.name}`;
+        const blob = await createBlob(await fileToBase64(item.file));
+        treeEntries.push({ path: item.path, mode: "100644", type: "blob", sha: blob.sha });
       }
       status.textContent = "正在发布网站数据…";
       const json = `${JSON.stringify(draft, null, 2)}\n`;
-      const result = await putFile(DATA_PATH, encodeBase64(json), "通过作品集后台更新内容", state.dataSha);
-      state.dataSha = result.content?.sha || state.dataSha;
+      const dataBlob = await createBlob(encodeBase64(json));
+      treeEntries.push({ path: DATA_PATH, mode: "100644", type: "blob", sha: dataBlob.sha });
+      const reference = await github(`/repos/${OWNER}/${REPO}/git/ref/heads/${encodeURIComponent(BRANCH)}`);
+      const parentSha = reference.object.sha;
+      const parentCommit = await github(`/repos/${OWNER}/${REPO}/git/commits/${parentSha}`);
+      const tree = await github(`/repos/${OWNER}/${REPO}/git/trees`, {
+        method: "POST",
+        body: { base_tree: parentCommit.tree.sha, tree: treeEntries },
+      });
+      const commit = await github(`/repos/${OWNER}/${REPO}/git/commits`, {
+        method: "POST",
+        body: {
+          message: "通过作品集后台更新内容",
+          tree: tree.sha,
+          parents: [parentSha],
+        },
+      });
+      await github(`/repos/${OWNER}/${REPO}/git/refs/heads/${encodeURIComponent(BRANCH)}`, {
+        method: "PATCH",
+        body: { sha: commit.sha, force: false },
+      });
+      state.dataSha = dataBlob.sha;
       state.data = draft;
       state.pending.forEach((item) => URL.revokeObjectURL(item.preview));
       state.pending.clear();
@@ -510,31 +540,50 @@
     }
   }
 
-  async function putFile(path, content, message, sha = "") {
-    const body = { message, content, branch: BRANCH };
-    if (sha) body.sha = sha;
-    return github(`/repos/${OWNER}/${REPO}/contents/${encodePath(path)}`, { method: "PUT", body });
+  function createBlob(content) {
+    return github(`/repos/${OWNER}/${REPO}/git/blobs`, {
+      method: "POST",
+      body: { content, encoding: "base64" },
+    });
   }
 
-  async function github(endpoint, options = {}) {
-    const response = await fetch(`${API_ROOT}${endpoint}`, {
-      method: options.method || "GET",
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${state.token}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-        ...(options.body ? { "Content-Type": "application/json" } : {}),
-      },
-      body: options.body ? JSON.stringify(options.body) : undefined,
-    });
-    let payload = null;
-    try { payload = await response.json(); } catch { payload = {}; }
-    if (!response.ok) {
-      const error = new Error(payload.message || `GitHub 请求失败（${response.status}）`);
-      error.status = response.status;
+  async function github(endpoint, options = {}, attempt = 0) {
+    try {
+      const response = await fetch(`${API_ROOT}${endpoint}`, {
+        method: options.method || "GET",
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: `Bearer ${state.token}`,
+          "X-GitHub-Api-Version": "2022-11-28",
+          ...(options.body ? { "Content-Type": "application/json" } : {}),
+        },
+        body: options.body ? JSON.stringify(options.body) : undefined,
+      });
+      let payload = null;
+      try { payload = await response.json(); } catch { payload = {}; }
+      if (!response.ok) {
+        const apiMessage = payload.message || `GitHub 请求失败（${response.status}）`;
+        const rateLimited = response.status === 429 || (response.status === 403 && /rate limit|abuse detection/i.test(apiMessage));
+        if ((rateLimited || response.status >= 500) && attempt < 4) {
+          const retryAfter = Number(response.headers.get("retry-after"));
+          const waitMs = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 1500 * 2 ** attempt;
+          await wait(Math.min(waitMs, 20000));
+          return github(endpoint, options, attempt + 1);
+        }
+        const error = new Error(apiMessage);
+        error.status = response.status;
+        error.apiMessage = apiMessage;
+        error.documentationUrl = payload.documentation_url || "";
+        throw error;
+      }
+      return payload;
+    } catch (error) {
+      if (!error.status && attempt < 3) {
+        await wait(1000 * 2 ** attempt);
+        return github(endpoint, options, attempt + 1);
+      }
       throw error;
     }
-    return payload;
   }
 
   function collectAssetUrls(data) {
@@ -585,15 +634,21 @@
     });
   }
 
+  function wait(milliseconds) {
+    return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+  }
+
   function safeColor(value, fallback) {
     return /^#[0-9a-f]{6}$/i.test(value || "") ? value : fallback;
   }
 
   function friendlyError(error) {
     if (error.status === 401) return "密钥无效或已过期，请重新创建管理员密钥。";
-    if (error.status === 403) return "GitHub 拒绝了写入请求，请检查密钥的仓库与 Contents 权限。";
+    if (error.status === 403 && /rate limit|abuse detection/i.test(error.apiMessage || "")) return "GitHub 暂时限制了连续上传。请等待 1 分钟后再点发布，未发布的修改仍保留在当前页面。";
+    if (error.status === 403) return "这枚密钥没有仓库内容写入权限。请在 GitHub 的 Fine-grained tokens 中编辑或新建密钥：Repository access 选择 Only select repositories → huzhibinnnn-coder.github.io；Repository permissions 将 Contents 设为 Read and write；保存后复制新密钥并重新登录。";
+    if (error.status === 404) return "这枚密钥没有选择网站仓库。请在 Repository access 中勾选 huzhibinnnn-coder.github.io。";
     if (error.status === 409) return "仓库内容刚刚发生变化，请刷新后台后重试。";
-    if (error.status === 422) return `文件或提交未被 GitHub 接受：${error.message}`;
+    if (error.status === 422) return `GitHub 未接受这次发布：${error.message}。请刷新后台后重试。`;
     return error.message || "操作失败，请检查网络后重试。";
   }
 
