@@ -3,283 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="胡志彬的数字媒体艺术作品集，包含特效、三维建模、AIGC、剪辑与游戏制作。"
-    />
-    <meta name="theme-color" content="#080b12" />
+    <meta name="description" content="胡志彬的数字媒体艺术作品集，包含特效、三维建模、AIGC、剪辑与游戏制作。" />
+    <meta name="theme-color" content="#0f172a" />
     <title>胡志彬｜数字媒体艺术作品集</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#works">跳到作品</a>
+    <a class="skip-link" href="#portfolio">跳到作品</a>
 
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="返回首页">
-        <span class="brand-mark" aria-hidden="true">HZ</span>
-        <span class="brand-copy">
-          <strong id="nav-name">胡志彬</strong>
-          <small>PORTFOLIO · 2027</small>
-        </span>
-      </a>
-      <nav class="header-actions" aria-label="主要导航">
-        <a href="#works">作品</a>
-        <a href="#about">关于</a>
-        <button class="button button-quiet" id="open-editor" type="button" aria-label="打开站点编辑器">
-          <span aria-hidden="true">✦</span> 编辑
-        </button>
-      </nav>
+      <div class="header-inner">
+        <a class="wordmark" href="#home" aria-label="返回首页">Portfolio</a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="main-nav">☰</button>
+        <nav class="main-nav" id="main-nav" aria-label="作品分类">
+          <a class="active" href="#home">首页</a>
+        </nav>
+      </div>
     </header>
 
-    <main id="top">
-      <section class="intro" id="about" aria-labelledby="profile-name">
-        <div class="intro-orbit" aria-hidden="true"></div>
-        <div class="profile-photo-wrap">
-          <img
-            class="profile-photo"
-            id="profile-avatar"
-            src="./assets/avatar.jpg"
-            alt="胡志彬的头像"
-          />
-          <span class="availability">求职作品集</span>
-        </div>
+    <main>
+      <section class="hero" id="home" aria-labelledby="profile-name">
+        <p class="eyebrow" id="profile-title">数字媒体艺术专业</p>
+        <h1 id="profile-name">胡志彬</h1>
+        <p class="hero-bio" id="profile-bio">数字媒体艺术专业27年毕业学生，就读于首都师范大学科德学院，本科毕业。欢迎您查看我的作品集网站。</p>
+        <a class="contact-button" id="hero-contact" href="mailto:2291177827@qq.com"><span aria-hidden="true">✉</span> 联系我</a>
+      </section>
 
-        <div class="intro-copy">
-          <p class="eyebrow">DIGITAL MEDIA ART · BEIJING</p>
-          <h1 id="profile-name">胡志彬</h1>
-          <p class="profile-title" id="profile-title">数字媒体艺术专业</p>
-          <p class="profile-bio" id="profile-bio">
-            数字媒体艺术专业27年毕业学生，就读于首都师范大学科德学院，本科毕业。欢迎您查看我的作品集网站。
-          </p>
-          <div class="contact-row" id="contact-row" aria-label="联系方式"></div>
-        </div>
-
-        <div class="intro-stats" aria-label="作品集统计">
-          <div>
-            <strong id="work-total">28</strong>
-            <span>件作品</span>
-          </div>
-          <div>
-            <strong>05</strong>
-            <span>创作方向</span>
-          </div>
-          <div>
-            <strong>2027</strong>
-            <span>毕业年份</span>
-          </div>
+      <section class="profile-card" aria-label="个人介绍">
+        <img class="profile-avatar" id="profile-avatar" src="./assets/avatar.jpg" alt="胡志彬的头像" />
+        <div class="profile-card-copy">
+          <h2 id="card-name">胡志彬</h2>
+          <p id="card-bio">数字媒体艺术专业27年毕业学生，就读于首都师范大学科德学院，本科毕业。欢迎您查看我的作品集网站。</p>
+          <div class="contact-list" id="contact-list"></div>
+          <div class="social-list" id="social-list"></div>
         </div>
       </section>
 
-      <section class="works-section" id="works" aria-labelledby="works-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">SELECTED WORKS</p>
-            <h2 id="works-title">作品目录</h2>
-          </div>
-          <p id="filter-summary" aria-live="polite">全部作品 · 28</p>
-        </div>
-
-        <div class="filter-bar" id="filter-bar" role="toolbar" aria-label="按分类筛选作品"></div>
-
-        <div class="work-grid" id="work-grid" aria-live="polite"></div>
-        <div class="empty-state" id="empty-state" hidden>
-          <p>这个分类暂时还没有作品。</p>
-        </div>
+      <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
+        <h2 class="sr-only" id="portfolio-title">分类作品</h2>
+        <div id="category-sections"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div>
-        <span class="footer-mark">HZ</span>
-        <p>胡志彬 · 数字媒体艺术作品集</p>
-      </div>
-      <p>更新于 <span id="updated-date">2026</span></p>
+      <p>© <span id="footer-year"></span> <span id="footer-name">胡志彬</span> · Portfolio</p>
     </footer>
 
     <dialog class="work-dialog" id="work-dialog" aria-labelledby="dialog-title">
-      <div class="dialog-shell">
-        <button class="icon-button dialog-close" id="close-work" type="button" aria-label="关闭作品详情">×</button>
-        <div class="dialog-heading">
-          <div>
-            <p class="eyebrow" id="dialog-category"></p>
-            <h2 id="dialog-title"></h2>
-          </div>
-          <time id="dialog-date"></time>
-        </div>
-        <p class="dialog-description" id="dialog-description"></p>
-        <div class="media-viewer" id="dialog-media"></div>
+      <form method="dialog"><button class="dialog-close" type="submit" aria-label="关闭">×</button></form>
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <p class="dialog-meta"><span id="dialog-category"></span><span id="dialog-date"></span></p>
+          <h2 id="dialog-title"></h2>
+          <p id="dialog-description"></p>
+          <div class="tag-list" id="dialog-tags"></div>
+        </header>
+        <div class="media-gallery" id="dialog-media"></div>
         <div class="file-list" id="dialog-files"></div>
       </div>
     </dialog>
 
-    <dialog class="editor-dialog" id="editor-dialog" aria-labelledby="editor-title">
-      <div class="editor-shell">
-        <header class="editor-header">
-          <div>
-            <p class="eyebrow">SITE EDITOR</p>
-            <h2 id="editor-title">编辑作品集</h2>
-          </div>
-          <button class="icon-button" id="close-editor" type="button" aria-label="关闭编辑器">×</button>
-        </header>
-
-        <div class="editor-note">
-          <strong>编辑不会公开显示你的 GitHub 密钥。</strong>
-          <span>可先在本设备预览；连接 GitHub 后再正式发布。</span>
-        </div>
-
-        <div class="editor-tabs" role="tablist" aria-label="编辑内容">
-          <button class="editor-tab active" type="button" role="tab" aria-selected="true" data-panel="profile-panel">个人与主题</button>
-          <button class="editor-tab" type="button" role="tab" aria-selected="false" data-panel="work-panel">作品与文件</button>
-          <button class="editor-tab" type="button" role="tab" aria-selected="false" data-panel="publish-panel">连接 GitHub</button>
-        </div>
-
-        <form class="editor-panel active" id="profile-panel" data-editor-panel>
-          <div class="field-grid">
-            <label>
-              <span>姓名</span>
-              <input id="edit-name" name="name" autocomplete="name" required />
-            </label>
-            <label>
-              <span>专业 / 职位</span>
-              <input id="edit-title" name="title" required />
-            </label>
-            <label class="field-wide">
-              <span>个人简介</span>
-              <textarea id="edit-bio" name="bio" rows="4" required></textarea>
-            </label>
-            <label>
-              <span>邮箱</span>
-              <input id="edit-email" name="email" type="email" autocomplete="email" />
-            </label>
-            <label>
-              <span>电话</span>
-              <input id="edit-phone" name="phone" type="tel" autocomplete="tel" />
-            </label>
-            <label>
-              <span>所在城市</span>
-              <input id="edit-location" name="location" autocomplete="address-level2" />
-            </label>
-            <label>
-              <span>更换头像</span>
-              <input id="edit-avatar" name="avatar" type="file" accept="image/*" />
-            </label>
-          </div>
-
-          <fieldset class="theme-fieldset">
-            <legend>网站主题</legend>
-            <div class="theme-presets" aria-label="主题预设">
-              <button type="button" data-theme-preset="midnight"><span class="preset midnight"></span>深夜蓝</button>
-              <button type="button" data-theme-preset="graphite"><span class="preset graphite"></span>石墨黑</button>
-              <button type="button" data-theme-preset="cloud"><span class="preset cloud"></span>云白</button>
-            </div>
-            <div class="color-grid">
-              <label><span>强调色</span><input id="edit-primary" type="color" /></label>
-              <label><span>辅助色</span><input id="edit-secondary" type="color" /></label>
-              <label><span>背景色</span><input id="edit-background" type="color" /></label>
-              <label><span>卡片色</span><input id="edit-card" type="color" /></label>
-              <label><span>文字色</span><input id="edit-text" type="color" /></label>
-              <label>
-                <span>字体风格</span>
-                <select id="edit-font">
-                  <option value="system-ui, -apple-system, 'Segoe UI', sans-serif">现代无衬线</option>
-                  <option value="'Noto Serif SC', 'Songti SC', serif">中文衬线</option>
-                  <option value="'SFMono-Regular', Consolas, monospace">现代等宽</option>
-                </select>
-              </label>
-            </div>
-          </fieldset>
-
-          <div class="form-actions">
-            <button class="button button-secondary" type="button" id="preview-profile">在本设备预览</button>
-            <button class="button button-primary" type="button" id="publish-profile">发布个人信息与主题</button>
-          </div>
-        </form>
-
-        <form class="editor-panel" id="work-panel" data-editor-panel>
-          <div class="field-grid">
-            <label class="field-wide">
-              <span>选择作品</span>
-              <select id="edit-work-select"></select>
-            </label>
-            <label>
-              <span>作品名称</span>
-              <input id="edit-work-title" required />
-            </label>
-            <label>
-              <span>分类</span>
-              <select id="edit-work-category" required></select>
-            </label>
-            <label>
-              <span>创作时间</span>
-              <input id="edit-work-date" placeholder="例如：2026-06" />
-            </label>
-            <label>
-              <span>标签</span>
-              <input id="edit-work-tags" placeholder="用逗号分隔" />
-            </label>
-            <label class="field-wide">
-              <span>作品说明</span>
-              <textarea id="edit-work-description" rows="4" placeholder="介绍你的职责、工具或创作思路"></textarea>
-            </label>
-            <label>
-              <span>封面图</span>
-              <input id="edit-work-cover" type="file" accept="image/*" />
-              <small>新增作品时必填</small>
-            </label>
-            <label>
-              <span>图片 / 视频</span>
-              <input id="edit-work-media" type="file" accept="image/*,video/*" multiple />
-              <small>单个文件建议小于 20MB</small>
-            </label>
-            <label class="field-wide">
-              <span>附件文件</span>
-              <input id="edit-work-files" type="file" multiple />
-              <small>可上传 PDF、压缩包、工程说明等</small>
-            </label>
-          </div>
-          <div class="form-actions split-actions">
-            <button class="button danger-button" type="button" id="delete-work" hidden>删除当前作品</button>
-            <span class="action-spacer"></span>
-            <button class="button button-secondary" type="button" id="preview-work">在本设备预览</button>
-            <button class="button button-primary" type="button" id="publish-work">上传并发布</button>
-          </div>
-        </form>
-
-        <form class="editor-panel" id="publish-panel" data-editor-panel>
-          <div class="connect-copy">
-            <h3>连接你的 GitHub 仓库</h3>
-            <p>
-              仅在发布时使用。建议创建只允许访问本作品集仓库、拥有 Contents 读写权限的 Fine-grained token。密钥只保留在当前页面内存中，关闭页面即清除。
-            </p>
-          </div>
-          <div class="field-grid">
-            <label>
-              <span>GitHub 用户名</span>
-              <input id="github-owner" autocomplete="username" />
-            </label>
-            <label>
-              <span>仓库名称</span>
-              <input id="github-repo" placeholder="portfolio" />
-            </label>
-            <label>
-              <span>分支</span>
-              <input id="github-branch" value="main" />
-            </label>
-            <label>
-              <span>访问密钥</span>
-              <input id="github-token" type="password" autocomplete="off" placeholder="github_pat_…" />
-            </label>
-          </div>
-          <div class="connection-status" id="connection-status" role="status">尚未连接</div>
-          <div class="form-actions">
-            <button class="button button-primary" type="button" id="connect-github">验证连接</button>
-          </div>
-        </form>
-      </div>
-    </dialog>
-
-    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <div class="loading-state" id="loading-state" role="status">正在加载作品…</div>
     <script src="./app.js" defer></script>
   </body>
 </html>

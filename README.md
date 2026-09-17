@@ -4,9 +4,11 @@
 
 ## 编辑内容
 
-打开网站后点击右上角“编辑”。你可以先在本设备预览个人介绍、主题和作品修改。
+公开网站只有查看功能。站长可在公开页按 `Ctrl + Alt + E` 进入独立后台，也可以直接访问 `/admin.html`。
 
-需要正式发布时，在“连接 GitHub”中填写仓库信息，并使用仅授权当前仓库、拥有 `Contents: Read and write` 权限的 Fine-grained personal access token。密钥不会写入网站或浏览器存储，关闭页面后会清除。
+后台会验证 GitHub 账号必须是仓库所有者，并要求当前仓库的写入权限。使用仅授权 `huzhibinnnn-coder.github.io` 仓库、拥有 `Contents: Read and write` 权限的 Fine-grained personal access token 作为管理员密钥。密钥不会写入网站或浏览器存储，关闭页面后会清除。
+
+后台支持编辑个人资料与主题，新增、修改、删除作品，以及上传图片、视频和附件。点击“发布全部修改”后，GitHub Actions 会自动更新公开网站。
 
 ## 本地查看
 
