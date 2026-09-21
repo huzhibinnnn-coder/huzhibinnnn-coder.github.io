@@ -25,40 +25,638 @@
     "fontFamily": "system-ui, -apple-system, sans-serif"
   },
   "categories": [
-    {"id": "vfx", "name": "特效", "icon": "✨"},
-    {"id": "3d", "name": "三维建模", "icon": "🧊"},
-    {"id": "aigc", "name": "AIGC", "icon": "🤖"},
-    {"id": "editing", "name": "剪辑", "icon": "🎬"},
-    {"id": "game", "name": "游戏制作", "icon": "🎮"}
+    {
+      "id": "vfx",
+      "name": "特效",
+      "icon": "✨"
+    },
+    {
+      "id": "3d",
+      "name": "三维建模",
+      "icon": "🧊"
+    },
+    {
+      "id": "aigc",
+      "name": "AIGC",
+      "icon": "🤖"
+    },
+    {
+      "id": "editing",
+      "name": "剪辑",
+      "icon": "🎬"
+    },
+    {
+      "id": "game",
+      "name": "游戏制作",
+      "icon": "🎮"
+    }
   ],
   "works": [
-    {"id":"work-vfx-001","title":"25年AE特效制作","category":"vfx","cover":"assets/thumb-work-vfx-001.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-001-01.mp4","caption":"角色素材.mp4"},{"type":"image","url":"assets/work-vfx-001-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-002","title":"25年AE作品","category":"vfx","cover":"assets/thumb-work-vfx-002.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-002-01.mp4","caption":"合成 1.mp4"},{"type":"image","url":"assets/work-vfx-002-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-003","title":"26年MG动画-北京旅游路线","category":"vfx","cover":"assets/thumb-work-vfx-003.jpg","description":"","tags":[],"date":"2026","media":[{"type":"video","url":"assets/work-vfx-003-01.mp4","caption":"北京旅游路线.mp4"},{"type":"image","url":"assets/work-vfx-003-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-004","title":"26年特效制作-赛博跟随","category":"vfx","cover":"assets/thumb-work-vfx-004.jpg","description":"","tags":[],"date":"2026","media":[{"type":"video","url":"assets/work-vfx-004-01.mp4","caption":"6.2赛博跟随街拍.mp4"},{"type":"image","url":"assets/work-vfx-004-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-005","title":"26年MG动画-猫办公","category":"vfx","cover":"assets/thumb-work-vfx-005.jpg","description":"","tags":[],"date":"2026","media":[{"type":"video","url":"assets/work-vfx-005-01.mp4","caption":"猫办公.mp4"},{"type":"image","url":"assets/work-vfx-005-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-006","title":"26年MG动画-日夜","category":"vfx","cover":"assets/thumb-work-vfx-006.jpg","description":"","tags":[],"date":"2026","media":[{"type":"video","url":"assets/work-vfx-006-01.mp4","caption":"日夜.mp4"},{"type":"image","url":"assets/work-vfx-006-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-007","title":"25年AE特效-Design Spin","category":"vfx","cover":"assets/thumb-work-vfx-007.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-007-01.mp4","caption":"Design Spin Out.mp4"},{"type":"image","url":"assets/work-vfx-007-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-008","title":"25年AE特效-合成","category":"vfx","cover":"assets/thumb-work-vfx-008.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-008-01.mp4","caption":"合成 1.mp4"},{"type":"image","url":"assets/work-vfx-008-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-009","title":"25年AE特效-Polygon","category":"vfx","cover":"assets/thumb-work-vfx-009.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-009-01.mp4","caption":"Polygon.mp4"},{"type":"image","url":"assets/work-vfx-009-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-010","title":"25年AE特效-合成","category":"vfx","cover":"assets/thumb-work-vfx-010.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-010-01.mp4","caption":"合成 1.mp4"},{"type":"image","url":"assets/work-vfx-010-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-011","title":"25年AE特效-Particle Zoom","category":"vfx","cover":"assets/thumb-work-vfx-011.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-011-01.mp4","caption":"Partide Zoom Comp.mp4"},{"type":"image","url":"assets/work-vfx-011-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-012","title":"25年AE特效-合成","category":"vfx","cover":"assets/thumb-work-vfx-012.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-vfx-012-01.mp4","caption":"合成 1.mp4"},{"type":"image","url":"assets/work-vfx-012-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-vfx-013","title":"26年AE画面UI创作","category":"vfx","cover":"assets/thumb-work-vfx-013.jpg","description":"","tags":[],"date":"2026","media":[{"type":"video","url":"assets/work-vfx-013-01.mp4","caption":"演示1.mp4"},{"type":"image","url":"assets/work-vfx-013-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-3d-001","title":"25年3月作业作品","category":"3d","cover":"assets/thumb-work-3d-001.jpg","description":"","tags":[],"date":"2025-03","media":[{"type":"video","url":"assets/work-3d-001-01.mp4","caption":"作品演示.mp4"},{"type":"image","url":"assets/work-3d-001-02.png","caption":"渲染效果"}],"files":[]},
-    {"id":"work-3d-002","title":"25年作业作品-Forest Scene","category":"3d","cover":"assets/thumb-work-3d-002.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-3d-002-01.mp4","caption":"Forest_Scene_07_1.mp4"},{"type":"image","url":"assets/work-3d-002-02.png","caption":"渲染效果"}],"files":[]},
-    {"id":"work-3d-003","title":"24年MAYA建模动画-zy16面部测试","category":"3d","cover":"assets/thumb-work-3d-003.jpg","description":"","tags":[],"date":"2024","media":[{"type":"image","url":"assets/work-3d-003-01.gif","caption":"zy16面部测试.gif"}],"files":[]},
-    {"id":"work-3d-004","title":"24年MAYA建模动画-丢垃圾","category":"3d","cover":"assets/thumb-work-3d-004.jpg","description":"","tags":[],"date":"2024","media":[{"type":"image","url":"assets/work-3d-004-01.gif","caption":"丢垃圾.gif"}],"files":[]},
-    {"id":"work-3d-005","title":"24年MAYA建模动画-鱼游","category":"3d","cover":"assets/thumb-work-3d-005.jpg","description":"","tags":[],"date":"2024","media":[{"type":"image","url":"assets/work-3d-005-01.gif","caption":"鱼游1.gif"}],"files":[]},
-    {"id":"work-3d-006","title":"24年MAYA建模动画-robot跑步","category":"3d","cover":"assets/thumb-work-3d-006.jpg","description":"","tags":[],"date":"2024","media":[{"type":"image","url":"assets/work-3d-006-01.gif","caption":"robot跑步.gif"}],"files":[]},
-    {"id":"work-3d-007","title":"24年MAYA建模动画-dance带衣","category":"3d","cover":"assets/thumb-work-3d-007.jpg","description":"","tags":[],"date":"2024","media":[{"type":"image","url":"assets/work-3d-007-01.gif","caption":"dance带衣.gif"}],"files":[]},
-    {"id":"work-3d-008","title":"24年MAYA建模动画3D追踪","category":"3d","cover":"assets/thumb-work-3d-008.jpg","description":"","tags":[],"date":"2024","media":[{"type":"video","url":"assets/work-3d-008-01.mp4","caption":"大作业.mp4"},{"type":"image","url":"assets/work-3d-008-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-aigc-001","title":"26年AIGC视频-剧情故事短片","category":"aigc","cover":"assets/thumb-work-aigc-001.jpg","description":"","tags":[],"date":"2026","media":[{"type":"video","url":"assets/work-aigc-001-01.mp4","caption":"剧情故事短片大作业.mp4"},{"type":"image","url":"assets/work-aigc-001-02.png","caption":"画面参考"}],"files":[]},
-    {"id":"work-aigc-002","title":"comfyUI工作流生图生视频","category":"aigc","cover":"assets/thumb-work-aigc-002.jpg","description":"","tags":[],"date":"2025","media":[{"type":"image","url":"assets/work-aigc-002-01.png","caption":"工作流展示1"},{"type":"image","url":"assets/work-aigc-002-02.png","caption":"工作流展示2"},{"type":"image","url":"assets/work-aigc-002-03.png","caption":"工作流展示3"},{"type":"image","url":"assets/work-aigc-002-04.gif","caption":"生成效果.gif"}],"files":[]},
-    {"id":"work-aigc-003","title":"comfyUI工作流AI替换视频","category":"aigc","cover":"assets/thumb-work-aigc-003.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-aigc-003-01.mp4","caption":"AI替换视频演示.mp4"},{"type":"image","url":"assets/work-aigc-003-02.gif","caption":"效果对比.gif"}],"files":[]},
-    {"id":"work-aigc-004","title":"AI生成定格动画","category":"aigc","cover":"assets/thumb-work-aigc-004.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-aigc-004-01.mp4","caption":"定格动画视频.mp4"},{"type":"image","url":"assets/work-aigc-004-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-editing-001","title":"25年真人演绎剪辑","category":"editing","cover":"assets/thumb-work-editing-001.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-editing-001-01.mp4","caption":"大作业.mp4"},{"type":"image","url":"assets/work-editing-001-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-editing-002","title":"25年真人演绎剪辑-合作作品","category":"editing","cover":"assets/thumb-work-editing-002.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-editing-002-01.mp4","caption":"崔瑞昊胡志彬合作.mp4"},{"type":"image","url":"assets/work-editing-002-02.png","caption":"作品展示"}],"files":[]},
-    {"id":"work-game-001","title":"UE5简单闯关游戏设计实录","category":"game","cover":"assets/thumb-work-game-001.jpg","description":"","tags":[],"date":"2025","media":[{"type":"video","url":"assets/work-game-001-01.mp4","caption":"游戏演示实录.mp4"},{"type":"image","url":"assets/work-game-001-02.png","caption":"游戏画面1"},{"type":"image","url":"assets/work-game-001-03.png","caption":"游戏画面2"},{"type":"image","url":"assets/work-game-001-04.png","caption":"游戏画面3"}],"files":[]}
+    {
+      "id": "work-vfx-001",
+      "title": "25年AE特效制作",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-001.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-001-01.mp4",
+          "caption": "角色素材.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-001-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-002",
+      "title": "25年AE作品",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-002.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-002-01.mp4",
+          "caption": "合成 1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-002-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-003",
+      "title": "26年MG动画-北京旅游路线",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-003.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-003-01.mp4",
+          "caption": "北京旅游路线.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-003-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-004",
+      "title": "26年特效制作-赛博跟随",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-004.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-004-01.mp4",
+          "caption": "6.2赛博跟随街拍.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-004-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-005",
+      "title": "26年MG动画-猫办公",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-005.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-005-01.mp4",
+          "caption": "猫办公.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-005-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-006",
+      "title": "26年MG动画-日夜",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-006.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-006-01.mp4",
+          "caption": "日夜.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-006-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-007",
+      "title": "25年AE特效-Design Spin",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-007.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-007-01.mp4",
+          "caption": "Design Spin Out.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-007-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-008",
+      "title": "25年AE特效-合成",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-008.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-008-01.mp4",
+          "caption": "合成 1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-008-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-009",
+      "title": "25年AE特效-Polygon",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-009.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-009-01.mp4",
+          "caption": "Polygon.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-009-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-010",
+      "title": "25年AE特效-合成",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-010.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-010-01.mp4",
+          "caption": "合成 1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-010-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-011",
+      "title": "25年AE特效-Particle Zoom",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-011.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-011-01.mp4",
+          "caption": "Partide Zoom Comp.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-011-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-012",
+      "title": "25年AE特效-合成",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-012.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-012-01.mp4",
+          "caption": "合成 1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-012-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-vfx-013",
+      "title": "26年AE画面UI创作",
+      "category": "vfx",
+      "cover": "assets/thumb-work-vfx-013.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-vfx-013-01.mp4",
+          "caption": "演示1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-vfx-013-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-001",
+      "title": "25年3月作业作品",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-001.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025-03",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-3d-001-01.mp4",
+          "caption": "作品演示.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-3d-001-02.png",
+          "caption": "渲染效果"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-002",
+      "title": "25年作业作品-Forest Scene",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-002.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-3d-002-01.mp4",
+          "caption": "Forest_Scene_07_1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-3d-002-02.png",
+          "caption": "渲染效果"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-003",
+      "title": "24年MAYA建模动画-zy16面部测试",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-003.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2024",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/work-3d-003-01.gif",
+          "caption": "zy16面部测试.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-004",
+      "title": "24年MAYA建模动画-丢垃圾",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-004.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2024",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/work-3d-004-01.gif",
+          "caption": "丢垃圾.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-005",
+      "title": "24年MAYA建模动画-鱼游",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-005.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2024",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/work-3d-005-01.gif",
+          "caption": "鱼游1.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-006",
+      "title": "24年MAYA建模动画-robot跑步",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-006.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2024",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/work-3d-006-01.gif",
+          "caption": "robot跑步.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-007",
+      "title": "24年MAYA建模动画-dance带衣",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-007.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2024",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/work-3d-007-01.gif",
+          "caption": "dance带衣.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-3d-008",
+      "title": "24年MAYA建模动画3D追踪",
+      "category": "3d",
+      "cover": "assets/thumb-work-3d-008.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2024",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-3d-008-01.mp4",
+          "caption": "大作业.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-3d-008-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-aigc-001",
+      "title": "26年AIGC视频-剧情故事短片",
+      "category": "aigc",
+      "cover": "assets/thumb-work-aigc-001.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-aigc-001-01.mp4",
+          "caption": "剧情故事短片大作业.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-aigc-001-02.png",
+          "caption": "画面参考"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-aigc-002",
+      "title": "comfyUI工作流生图生视频",
+      "category": "aigc",
+      "cover": "assets/thumb-work-aigc-002.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/work-aigc-002-01.png",
+          "caption": "工作流展示1"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-aigc-002-02.png",
+          "caption": "工作流展示2"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-aigc-002-03.png",
+          "caption": "工作流展示3"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-aigc-002-04.gif",
+          "caption": "生成效果.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-aigc-003",
+      "title": "comfyUI工作流AI替换视频",
+      "category": "aigc",
+      "cover": "assets/thumb-work-aigc-003.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-aigc-003-01.mp4",
+          "caption": "AI替换视频演示.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-aigc-003-02.gif",
+          "caption": "效果对比.gif"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-aigc-004",
+      "title": "AI生成定格动画",
+      "category": "aigc",
+      "cover": "assets/upload-1789959183015-jwkzc4.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/upload-1789959172543-1i4e1r3.mp4",
+          "caption": "ai定格动画.mp4"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-editing-001",
+      "title": "25年真人演绎剪辑",
+      "category": "editing",
+      "cover": "assets/thumb-work-editing-001.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-editing-001-01.mp4",
+          "caption": "大作业.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-editing-001-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-editing-002",
+      "title": "25年真人演绎剪辑-合作作品",
+      "category": "editing",
+      "cover": "assets/thumb-work-editing-002.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-editing-002-01.mp4",
+          "caption": "崔瑞昊胡志彬合作.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-editing-002-02.png",
+          "caption": "作品展示"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": "work-game-001",
+      "title": "UE5简单闯关游戏设计实录",
+      "category": "game",
+      "cover": "assets/thumb-work-game-001.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2025",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/work-game-001-01.mp4",
+          "caption": "游戏演示实录.mp4"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-game-001-02.png",
+          "caption": "游戏画面1"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-game-001-03.png",
+          "caption": "游戏画面2"
+        },
+        {
+          "type": "image",
+          "url": "assets/work-game-001-04.png",
+          "caption": "游戏画面3"
+        }
+      ],
+      "files": []
+    }
   ]
 }
