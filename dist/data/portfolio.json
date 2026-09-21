@@ -586,7 +586,7 @@
       "id": "work-editing-001",
       "title": "25年真人演绎剪辑",
       "category": "editing",
-      "cover": "assets/thumb-work-editing-001.jpg",
+      "cover": "assets/upload-1789959305430-11hos73.jpg",
       "description": "",
       "tags": [],
       "date": "2025",
@@ -595,11 +595,6 @@
           "type": "video",
           "url": "assets/work-editing-001-01.mp4",
           "caption": "大作业.mp4"
-        },
-        {
-          "type": "image",
-          "url": "assets/work-editing-001-02.png",
-          "caption": "作品展示"
         }
       ],
       "files": []
@@ -608,20 +603,15 @@
       "id": "work-editing-002",
       "title": "25年真人演绎剪辑-合作作品",
       "category": "editing",
-      "cover": "assets/thumb-work-editing-002.jpg",
+      "cover": "assets/upload-1789959341340-1mdtfh9.jpg",
       "description": "",
       "tags": [],
       "date": "2025",
       "media": [
         {
           "type": "video",
-          "url": "assets/work-editing-002-01.mp4",
-          "caption": "崔瑞昊胡志彬合作.mp4"
-        },
-        {
-          "type": "image",
-          "url": "assets/work-editing-002-02.png",
-          "caption": "作品展示"
+          "url": "assets/upload-1789959330027-8osdbp.mp4",
+          "caption": "work-aigc-004-01.mp4"
         }
       ],
       "files": []
