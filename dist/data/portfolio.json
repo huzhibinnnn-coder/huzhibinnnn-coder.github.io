@@ -53,6 +53,23 @@
   ],
   "works": [
     {
+      "id": "work-vfx-1791539397409",
+      "title": "26年AIGC短片",
+      "category": "aigc",
+      "cover": "assets/upload-1791539572799-15vx0ny.jpg",
+      "description": "",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "video",
+          "url": "assets/upload-1791539560226-su5ftk.mp4",
+          "caption": "压缩版成品.mp4"
+        }
+      ],
+      "files": []
+    },
+    {
       "id": "work-vfx-001",
       "title": "25年AE特效制作",
       "category": "vfx",
