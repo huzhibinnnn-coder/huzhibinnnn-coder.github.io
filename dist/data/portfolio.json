@@ -69,7 +69,8 @@
           "caption": "压缩版成品.mp4"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 4
     },
     {
       "id": "work-vfx-001",
@@ -91,7 +92,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 12
     },
     {
       "id": "work-vfx-002",
@@ -113,7 +115,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 11
     },
     {
       "id": "work-vfx-003",
@@ -135,7 +138,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 10
     },
     {
       "id": "work-vfx-004",
@@ -157,7 +161,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 9
     },
     {
       "id": "work-vfx-005",
@@ -179,7 +184,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 8
     },
     {
       "id": "work-vfx-006",
@@ -201,7 +207,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 7
     },
     {
       "id": "work-vfx-007",
@@ -223,7 +230,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 6
     },
     {
       "id": "work-vfx-008",
@@ -245,7 +253,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 5
     },
     {
       "id": "work-vfx-009",
@@ -267,7 +276,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 4
     },
     {
       "id": "work-vfx-010",
@@ -289,7 +299,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 3
     },
     {
       "id": "work-vfx-011",
@@ -311,7 +322,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 2
     },
     {
       "id": "work-vfx-012",
@@ -333,7 +345,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 1
     },
     {
       "id": "work-vfx-013",
@@ -355,7 +368,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 0
     },
     {
       "id": "work-3d-001",
@@ -377,7 +391,8 @@
           "caption": "渲染效果"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 7
     },
     {
       "id": "work-3d-002",
@@ -399,7 +414,8 @@
           "caption": "渲染效果"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 6
     },
     {
       "id": "work-3d-003",
@@ -416,7 +432,8 @@
           "caption": "zy16面部测试.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 5
     },
     {
       "id": "work-3d-004",
@@ -433,7 +450,8 @@
           "caption": "丢垃圾.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 4
     },
     {
       "id": "work-3d-005",
@@ -450,7 +468,8 @@
           "caption": "鱼游1.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 3
     },
     {
       "id": "work-3d-006",
@@ -467,7 +486,8 @@
           "caption": "robot跑步.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 2
     },
     {
       "id": "work-3d-007",
@@ -484,7 +504,8 @@
           "caption": "dance带衣.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 1
     },
     {
       "id": "work-3d-008",
@@ -506,7 +527,8 @@
           "caption": "作品展示"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 0
     },
     {
       "id": "work-aigc-001",
@@ -530,7 +552,8 @@
           "caption": "画面参考"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 3
     },
     {
       "id": "work-aigc-002",
@@ -564,7 +587,8 @@
           "caption": "生成效果.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 2
     },
     {
       "id": "work-aigc-003",
@@ -588,7 +612,8 @@
           "caption": "效果对比.gif"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 1
     },
     {
       "id": "work-aigc-004",
@@ -607,7 +632,8 @@
           "caption": "ai定格动画.mp4"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 0
     },
     {
       "id": "work-editing-001",
@@ -624,7 +650,8 @@
           "caption": "大作业.mp4"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 1
     },
     {
       "id": "work-editing-002",
@@ -641,7 +668,8 @@
           "caption": "work-aigc-004-01.mp4"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 0
     },
     {
       "id": "work-game-001",
@@ -673,7 +701,8 @@
           "caption": "游戏画面3"
         }
       ],
-      "files": []
+      "files": [],
+      "order": 0
     }
   ]
 }

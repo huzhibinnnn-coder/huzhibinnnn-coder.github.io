@@ -43,6 +43,7 @@
           <button class="nav-item active" type="button" data-panel="profile-panel">个人资料</button>
           <button class="nav-item" type="button" data-panel="theme-panel">网站主题</button>
           <button class="nav-item" type="button" data-panel="works-panel">作品管理</button>
+          <button class="nav-item" type="button" data-panel="sort-panel">作品排序</button>
         </nav>
         <div class="publish-box">
           <p>修改只在点击发布后生效。</p>
@@ -115,6 +116,17 @@
               <fieldset><legend>附件文件</legend><div class="asset-list" id="file-list"></div><label class="upload-zone">＋ 添加附件<input id="work-attachment-files" type="file" multiple /></label></fieldset>
               <button class="button secondary" id="apply-work" type="submit">保存当前作品修改</button>
             </form>
+          </div>
+        </section>
+
+        <section class="editor-panel" id="sort-panel" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">ORDER</p><h1>作品排序</h1></div></div>
+          <div class="sort-card">
+            <div class="sort-toolbar">
+              <label>选择分类<select id="sort-category"></select></label>
+              <p>这里的顺序就是公开网站中的展示顺序。拖动作品，或使用右侧按钮，把优质作品放到最前面。</p>
+            </div>
+            <div class="sort-work-list" id="sort-work-list"></div>
           </div>
         </section>
       </div>

@@ -16,6 +16,7 @@
     data: null,
     dataSha: "",
     selectedId: "",
+    draggedWorkId: "",
     pending: new Map(),
     dirty: false,
     toastTimer: 0,
@@ -86,6 +87,15 @@
   }
 
   function normalizeData(raw) {
+    const categories = Array.isArray(raw.categories) ? raw.categories : [];
+    const works = Array.isArray(raw.works) ? raw.works : [];
+    categories.forEach((category) => {
+      const categoryWorks = works.filter((work) => work.category === category.id);
+      const ordered = categoryWorks.every((work) => Number.isFinite(Number(work.order)))
+        ? categoryWorks.slice().sort((left, right) => Number(left.order) - Number(right.order))
+        : categoryWorks.slice().reverse();
+      ordered.forEach((work, index) => { work.order = index; });
+    });
     return {
       profile: {
         name: "",
@@ -109,8 +119,8 @@
         fontFamily: "system-ui, -apple-system, sans-serif",
         ...(raw.theme || {}),
       },
-      categories: Array.isArray(raw.categories) ? raw.categories : [],
-      works: Array.isArray(raw.works) ? raw.works : [],
+      categories,
+      works,
     };
   }
 
@@ -125,6 +135,7 @@
     fillThemeForm();
     fillCategoryOptions();
     renderWorkList();
+    renderSortList();
   }
 
   function logout() {
@@ -259,6 +270,7 @@
   function bindWorkEditor() {
     $("#work-search").addEventListener("input", renderWorkList);
     $("#work-category-filter").addEventListener("change", renderWorkList);
+    $("#sort-category").addEventListener("change", renderSortList);
     $("#add-work").addEventListener("click", addWork);
     $("#delete-work").addEventListener("click", deleteSelectedWork);
     $("#work-editor").addEventListener("submit", (event) => {
@@ -315,7 +327,9 @@
   function fillCategoryOptions() {
     const editor = $("#work-category");
     const filter = $("#work-category-filter");
+    const sorter = $("#sort-category");
     editor.replaceChildren();
+    sorter.replaceChildren();
     filter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
     state.data.categories.forEach((category) => {
       const option = document.createElement("option");
@@ -323,6 +337,7 @@
       option.textContent = category.name;
       editor.append(option);
       filter.append(option.cloneNode(true));
+      sorter.append(option.cloneNode(true));
     });
   }
 
@@ -332,8 +347,11 @@
     const query = $("#work-search").value.trim().toLowerCase();
     const categoryFilter = $("#work-category-filter").value;
     list.replaceChildren();
-    state.data.works
-      .filter((work) => (!query || work.title.toLowerCase().includes(query)) && (categoryFilter === "all" || work.category === categoryFilter))
+    const visibleWorks = categoryFilter === "all"
+      ? state.data.categories.flatMap((category) => orderedWorks(category.id))
+      : orderedWorks(categoryFilter);
+    visibleWorks
+      .filter((work) => !query || work.title.toLowerCase().includes(query))
       .forEach((work) => {
         const category = state.data.categories.find((item) => item.id === work.category);
         const button = document.createElement("button");
@@ -353,6 +371,135 @@
         button.addEventListener("click", () => selectWork(work.id));
         list.append(button);
       });
+  }
+
+  function renderSortList() {
+    if (!state.data) return;
+    const categorySelect = $("#sort-category");
+    const categoryId = categorySelect.value || state.data.categories[0]?.id || "";
+    if (!categorySelect.value && categoryId) categorySelect.value = categoryId;
+    const list = $("#sort-work-list");
+    list.replaceChildren();
+    const works = orderedWorks(categoryId);
+    if (!works.length) {
+      const empty = document.createElement("p");
+      empty.className = "sort-empty";
+      empty.textContent = "这个分类还没有作品";
+      list.append(empty);
+      return;
+    }
+
+    works.forEach((work, index) => {
+      const row = document.createElement("div");
+      row.className = "sort-work-row";
+      row.draggable = true;
+      row.dataset.workId = work.id;
+      const position = document.createElement("span");
+      position.className = "sort-index";
+      position.textContent = String(index + 1);
+      const image = document.createElement("img");
+      image.className = "sort-thumb";
+      image.src = previewUrl(work.cover);
+      image.alt = "";
+      const copy = document.createElement("div");
+      copy.className = "sort-copy";
+      const title = document.createElement("strong");
+      title.textContent = work.title || "未命名作品";
+      const meta = document.createElement("small");
+      meta.textContent = index < 4 ? `公开页首屏 · 第 ${index + 1} 位` : `点开更多后 · 第 ${index + 1} 位`;
+      copy.append(title, meta);
+      const actions = document.createElement("div");
+      actions.className = "sort-actions";
+      const topButton = makeSortButton("置顶", `将${work.title}移到第一位`, index === 0, () => moveWorkToTop(work.id));
+      const upButton = makeSortButton("↑", `将${work.title}向前移动`, index === 0, () => moveSortedWork(work.id, -1));
+      const downButton = makeSortButton("↓", `将${work.title}向后移动`, index === works.length - 1, () => moveSortedWork(work.id, 1));
+      actions.append(topButton, upButton, downButton);
+      row.append(position, image, copy, actions);
+
+      row.addEventListener("dragstart", (event) => {
+        state.draggedWorkId = work.id;
+        row.classList.add("dragging");
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("text/plain", work.id);
+      });
+      row.addEventListener("dragover", (event) => {
+        if (!state.draggedWorkId || state.draggedWorkId === work.id) return;
+        event.preventDefault();
+        const after = event.clientY > row.getBoundingClientRect().top + row.offsetHeight / 2;
+        row.classList.toggle("drop-before", !after);
+        row.classList.toggle("drop-after", after);
+      });
+      row.addEventListener("dragleave", () => row.classList.remove("drop-before", "drop-after"));
+      row.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const after = event.clientY > row.getBoundingClientRect().top + row.offsetHeight / 2;
+        dropSortedWork(state.draggedWorkId, work.id, after);
+      });
+      row.addEventListener("dragend", () => {
+        state.draggedWorkId = "";
+        $$(".sort-work-row").forEach((item) => item.classList.remove("dragging", "drop-before", "drop-after"));
+      });
+      list.append(row);
+    });
+  }
+
+  function makeSortButton(label, ariaLabel, disabled, action) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.disabled = disabled;
+    button.setAttribute("aria-label", ariaLabel);
+    button.addEventListener("click", action);
+    return button;
+  }
+
+  function orderedWorks(categoryId) {
+    return state.data.works
+      .filter((work) => work.category === categoryId)
+      .sort((left, right) => {
+        const leftOrder = Number(left.order);
+        const rightOrder = Number(right.order);
+        if (Number.isFinite(leftOrder) && Number.isFinite(rightOrder)) return leftOrder - rightOrder;
+        return state.data.works.indexOf(right) - state.data.works.indexOf(left);
+      });
+  }
+
+  function applyCategoryOrder(categoryId, works) {
+    works.forEach((work, index) => { work.order = index; });
+    state.dirty = true;
+    renderSortList();
+    renderWorkList();
+  }
+
+  function moveSortedWork(workId, direction) {
+    const work = state.data.works.find((item) => item.id === workId);
+    if (!work) return;
+    const works = orderedWorks(work.category);
+    const index = works.findIndex((item) => item.id === workId);
+    const nextIndex = Math.max(0, Math.min(works.length - 1, index + direction));
+    if (index === nextIndex) return;
+    [works[index], works[nextIndex]] = [works[nextIndex], works[index]];
+    applyCategoryOrder(work.category, works);
+  }
+
+  function moveWorkToTop(workId) {
+    const work = state.data.works.find((item) => item.id === workId);
+    if (!work) return;
+    const works = orderedWorks(work.category).filter((item) => item.id !== workId);
+    works.unshift(work);
+    applyCategoryOrder(work.category, works);
+  }
+
+  function dropSortedWork(sourceId, targetId, after) {
+    if (!sourceId || sourceId === targetId) return;
+    const source = state.data.works.find((item) => item.id === sourceId);
+    const target = state.data.works.find((item) => item.id === targetId);
+    if (!source || !target || source.category !== target.category) return;
+    const works = orderedWorks(source.category).filter((item) => item.id !== sourceId);
+    const targetIndex = works.findIndex((item) => item.id === targetId);
+    works.splice(targetIndex + (after ? 1 : 0), 0, source);
+    state.draggedWorkId = "";
+    applyCategoryOrder(source.category, works);
   }
 
   function selectWork(id) {
@@ -376,20 +523,31 @@
   function saveSelectedWork(showFeedback = true) {
     const work = selectedWork();
     if (!work) return;
+    const previousCategory = work.category;
+    const nextCategory = $("#work-category").value;
     work.title = $("#work-title").value.trim() || "未命名作品";
-    work.category = $("#work-category").value;
+    if (previousCategory !== nextCategory) {
+      const previousWorks = orderedWorks(previousCategory).filter((item) => item.id !== work.id);
+      previousWorks.forEach((item, index) => { item.order = index; });
+      const nextWorks = orderedWorks(nextCategory);
+      nextWorks.forEach((item, index) => { item.order = index + 1; });
+      work.category = nextCategory;
+      work.order = 0;
+    }
     work.date = $("#work-date").value.trim();
     work.description = $("#work-description").value.trim();
     work.tags = $("#work-tags").value.split(/[,，]/).map((tag) => tag.trim()).filter(Boolean);
     $("#work-editor-heading").textContent = work.title;
     state.dirty = true;
     renderWorkList();
+    renderSortList();
     if (showFeedback) toast("作品信息已保存");
   }
 
   function addWork() {
     if (state.selectedId) saveSelectedWork(false);
     const category = state.data.categories[0]?.id || "other";
+    orderedWorks(category).forEach((item, index) => { item.order = index + 1; });
     const work = {
       id: `work-${category}-${Date.now()}`,
       title: "新作品",
@@ -400,21 +558,28 @@
       date: String(new Date().getFullYear()),
       media: [],
       files: [],
+      order: 0,
     };
     state.data.works.unshift(work);
     state.dirty = true;
+    $("#work-category-filter").value = category;
+    $("#sort-category").value = category;
     selectWork(work.id);
+    renderSortList();
   }
 
   function deleteSelectedWork() {
     const work = selectedWork();
     if (!work || !window.confirm(`确定删除“${work.title}”吗？删除会在发布后生效。`)) return;
+    const category = work.category;
     state.data.works = state.data.works.filter((item) => item.id !== work.id);
+    orderedWorks(category).forEach((item, index) => { item.order = index; });
     state.selectedId = "";
     state.dirty = true;
     $("#work-editor").hidden = true;
     $("#work-editor-empty").hidden = false;
     renderWorkList();
+    renderSortList();
   }
 
   function renderAssetLists(work) {

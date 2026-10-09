@@ -121,7 +121,9 @@
     const container = $("#category-sections");
     container.replaceChildren();
     state.data.categories.forEach((category) => {
-      const works = state.data.works.filter((work) => work.category === category.id).slice().reverse();
+      const works = state.data.works
+        .filter((work) => work.category === category.id)
+        .sort((left, right) => workOrder(left) - workOrder(right));
       const section = document.createElement("section");
       section.className = "category-section";
       section.id = `category-${category.id}`;
@@ -164,6 +166,12 @@
     else state.expanded.add(categoryId);
     renderCategories();
     if (!state.expanded.has(categoryId)) document.querySelector(`#category-${CSS.escape(categoryId)}`)?.scrollIntoView({ block: "start" });
+  }
+
+  function workOrder(work) {
+    const explicitOrder = Number(work.order);
+    if (Number.isFinite(explicitOrder)) return explicitOrder;
+    return -state.data.works.indexOf(work);
   }
 
   function createWorkCard(work, category) {
