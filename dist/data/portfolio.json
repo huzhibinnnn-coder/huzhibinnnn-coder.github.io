@@ -58,7 +58,9 @@
       "category": "aigc",
       "cover": "assets/upload-1791539572799-15vx0ny.jpg",
       "description": "",
-      "tags": [],
+      "tags": [
+        "2"
+      ],
       "date": "2026",
       "media": [
         {
@@ -512,7 +514,9 @@
       "category": "aigc",
       "cover": "assets/thumb-work-aigc-001.jpg",
       "description": "",
-      "tags": [],
+      "tags": [
+        "1"
+      ],
       "date": "2026",
       "media": [
         {
@@ -534,7 +538,9 @@
       "category": "aigc",
       "cover": "assets/thumb-work-aigc-002.jpg",
       "description": "",
-      "tags": [],
+      "tags": [
+        "5"
+      ],
       "date": "2025",
       "media": [
         {
@@ -566,7 +572,9 @@
       "category": "aigc",
       "cover": "assets/thumb-work-aigc-003.jpg",
       "description": "",
-      "tags": [],
+      "tags": [
+        "4"
+      ],
       "date": "2025",
       "media": [
         {
@@ -588,7 +596,9 @@
       "category": "aigc",
       "cover": "assets/upload-1789959183015-jwkzc4.jpg",
       "description": "",
-      "tags": [],
+      "tags": [
+        "3"
+      ],
       "date": "2025",
       "media": [
         {
