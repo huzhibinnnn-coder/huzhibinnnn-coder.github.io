@@ -26,6 +26,11 @@
   },
   "categories": [
     {
+      "id": "aigc",
+      "name": "AIGC",
+      "icon": "🤖"
+    },
+    {
       "id": "vfx",
       "name": "特效",
       "icon": "✨"
@@ -34,11 +39,6 @@
       "id": "3d",
       "name": "三维建模",
       "icon": "🧊"
-    },
-    {
-      "id": "aigc",
-      "name": "AIGC",
-      "icon": "🤖"
     },
     {
       "id": "editing",
