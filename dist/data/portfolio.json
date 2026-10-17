@@ -41,11 +41,6 @@
       "icon": "🧊"
     },
     {
-      "id": "editing",
-      "name": "剪辑",
-      "icon": "🎬"
-    },
-    {
       "id": "game",
       "name": "游戏制作",
       "icon": "🎮"
@@ -630,42 +625,6 @@
       ],
       "files": [],
       "order": 2
-    },
-    {
-      "id": "work-editing-001",
-      "title": "25年真人演绎剪辑",
-      "category": "editing",
-      "cover": "assets/upload-1789959305430-11hos73.jpg",
-      "description": "",
-      "tags": [],
-      "date": "2025",
-      "media": [
-        {
-          "type": "video",
-          "url": "assets/work-editing-001-01.mp4",
-          "caption": "大作业.mp4"
-        }
-      ],
-      "files": [],
-      "order": 1
-    },
-    {
-      "id": "work-editing-002",
-      "title": "25年真人演绎剪辑-合作作品",
-      "category": "editing",
-      "cover": "assets/upload-1789959341340-1mdtfh9.jpg",
-      "description": "",
-      "tags": [],
-      "date": "2025",
-      "media": [
-        {
-          "type": "video",
-          "url": "assets/upload-1789959330027-8osdbp.mp4",
-          "caption": "work-aigc-004-01.mp4"
-        }
-      ],
-      "files": [],
-      "order": 0
     },
     {
       "id": "work-game-001",
