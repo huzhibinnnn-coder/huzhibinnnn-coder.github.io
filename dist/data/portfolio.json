@@ -48,6 +48,64 @@
   ],
   "works": [
     {
+      "id": "work-aigc-1793587994318",
+      "title": "IP设计",
+      "category": "aigc",
+      "cover": "assets/upload-1793588030734-18bar48.jpg",
+      "description": "以北京地标建筑为拟人化的IP设计",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/upload-1793588072236-6qh5j0.png",
+          "caption": "海报.png"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588072237-n91ovs.jpg",
+          "caption": "中国尊-云尊IP宣传图.jpg"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588078197-3xhs5.png",
+          "caption": "关山相逢_垣宝_01_城楼相逢.png"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588078198-bxdicl.png",
+          "caption": "关山相逢_垣宝_02_凭垛望山.png"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588078207-ox303e.jpg",
+          "caption": "关山相逢_垣宝宣传图_5MB以内.jpg"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588085341-1jtr9nw.jpg",
+          "caption": "海报_顶部调整_v2_5MB以内.jpg"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588085343-15oppiz.png",
+          "caption": "宣传图.png"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588090523-12nx08y.jpg",
+          "caption": "大兴机场-IP宣传图.jpg"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1793588090532-1ju3utl.png",
+          "caption": "宣传图.png"
+        }
+      ],
+      "files": [],
+      "order": 0
+    },
+    {
       "id": "work-vfx-1791539397409",
       "title": "26年AIGC短片",
       "category": "aigc",
@@ -65,7 +123,7 @@
         }
       ],
       "files": [],
-      "order": 0
+      "order": 1
     },
     {
       "id": "work-vfx-001",
@@ -548,7 +606,7 @@
         }
       ],
       "files": [],
-      "order": 1
+      "order": 2
     },
     {
       "id": "work-aigc-002",
@@ -581,7 +639,7 @@
         }
       ],
       "files": [],
-      "order": 4
+      "order": 5
     },
     {
       "id": "work-aigc-003",
@@ -604,7 +662,7 @@
         }
       ],
       "files": [],
-      "order": 3
+      "order": 4
     },
     {
       "id": "work-aigc-004",
@@ -624,7 +682,7 @@
         }
       ],
       "files": [],
-      "order": 2
+      "order": 3
     },
     {
       "id": "work-game-001",
