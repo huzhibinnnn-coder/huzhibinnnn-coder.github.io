@@ -48,6 +48,42 @@
   ],
   "works": [
     {
+      "id": "work-aigc-1795052191790",
+      "title": "PicToon个人试做",
+      "category": "aigc",
+      "cover": "assets/upload-1795052681493-e326c6.jpg",
+      "description": "PicToon｜海外 AI 头像工具信息流广告\n\n基于模拟需求，独立完成从脚本、主角资产和六张风格头像，到 AE 动效、剪辑与导出的全过程。交付三条 9:16 竖屏广告，各 17 秒。三个版本共用产品演示与结尾行动引导，只替换前 2.7 秒。A 版先亮出成品，再揭示它来自一张自拍。B 版从长期使用同一张旧头像切入。C 版用拍摄、快门和海报揭晓制造悬念。\n\n头像由同一角色参考图生成，六宫格滚动、数字加载环和头像框入场在 AE 中制作，以便控制界面文字、元素位置和动画时序。试做中发现，部分风格会改变角色的年龄感，下一轮可以统一年龄描述并加强身份参考。本组为个人模拟项目，未实际投放。",
+      "tags": [],
+      "date": "2026",
+      "media": [
+        {
+          "type": "image",
+          "url": "assets/upload-1795052697507-15euxt.png",
+          "caption": "PicToon流程图.png"
+        },
+        {
+          "type": "image",
+          "url": "assets/upload-1795052781164-1lue6qf.png",
+          "caption": "AE工程图.png"
+        }
+      ],
+      "files": [
+        {
+          "url": "assets/upload-1795052216926-1ad859.mp4",
+          "name": "PicToon_A1.mp4"
+        },
+        {
+          "url": "assets/upload-1795052216926-1o8p9l4.mp4",
+          "name": "PicToon_B1.mp4"
+        },
+        {
+          "url": "assets/upload-1795052216926-llaofw.mp4",
+          "name": "PicToon_C1.mp4"
+        }
+      ],
+      "order": 0
+    },
+    {
       "id": "work-aigc-1793587994318",
       "title": "IP设计",
       "category": "aigc",
@@ -103,7 +139,7 @@
         }
       ],
       "files": [],
-      "order": 2
+      "order": 3
     },
     {
       "id": "work-vfx-1791539397409",
@@ -123,7 +159,7 @@
         }
       ],
       "files": [],
-      "order": 0
+      "order": 1
     },
     {
       "id": "work-vfx-001",
@@ -606,7 +642,7 @@
         }
       ],
       "files": [],
-      "order": 1
+      "order": 2
     },
     {
       "id": "work-aigc-002",
@@ -639,7 +675,7 @@
         }
       ],
       "files": [],
-      "order": 5
+      "order": 6
     },
     {
       "id": "work-aigc-003",
@@ -662,7 +698,7 @@
         }
       ],
       "files": [],
-      "order": 4
+      "order": 5
     },
     {
       "id": "work-aigc-004",
@@ -682,7 +718,7 @@
         }
       ],
       "files": [],
-      "order": 3
+      "order": 4
     },
     {
       "id": "work-game-001",
