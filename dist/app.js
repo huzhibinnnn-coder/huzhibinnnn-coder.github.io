@@ -37,8 +37,20 @@
       profile: { ...defaults.profile, ...(raw.profile || {}), links: { ...(raw.profile?.links || {}) } },
       theme: { ...(raw.theme || {}) },
       categories: Array.isArray(raw.categories) ? raw.categories : [],
-      works: Array.isArray(raw.works) ? raw.works : [],
+      works: Array.isArray(raw.works) ? raw.works.map(normalizeWorkVideos) : [],
     };
+  }
+
+  function normalizeWorkVideos(work) {
+    const media = [...(work.media || [])];
+    const files = (work.files || []).filter((file) => {
+      if (!/\.(mp4|webm|mov|m4v|ogv)(?:[?#]|$)/i.test(file.url || "")) return true;
+      if (!media.some((item) => item.url === file.url)) {
+        media.push({ type: "video", url: file.url, caption: file.caption || file.name || "视频" });
+      }
+      return false;
+    });
+    return { ...work, media, files };
   }
 
   function applyTheme(theme) {

@@ -89,6 +89,16 @@
   function normalizeData(raw) {
     const categories = Array.isArray(raw.categories) ? raw.categories : [];
     const works = Array.isArray(raw.works) ? raw.works : [];
+    works.forEach((work) => {
+      work.media ||= [];
+      work.files = (work.files || []).filter((file) => {
+        if (!/\.(mp4|webm|mov|m4v|ogv)(?:[?#]|$)/i.test(file.url || "")) return true;
+        if (!work.media.some((item) => item.url === file.url)) {
+          work.media.push({ type: "video", url: file.url, caption: file.caption || file.name || "视频" });
+        }
+        return false;
+      });
+    });
     categories.forEach((category) => {
       const categoryWorks = works.filter((work) => work.category === category.id);
       const ordered = categoryWorks.every((work) => Number.isFinite(Number(work.order)))
@@ -299,9 +309,7 @@
       if (!work) return;
       try {
         [...event.target.files].forEach((file) => {
-          const asset = queueFile(file);
-          work.media ||= [];
-          work.media.push({ type: isVideo(file) ? "video" : "image", url: asset.url, caption: file.name });
+          queueWorkAsset(work, file);
         });
         state.dirty = true;
         renderAssetLists(work);
@@ -313,9 +321,7 @@
       if (!work) return;
       try {
         [...event.target.files].forEach((file) => {
-          const asset = queueFile(file);
-          work.files ||= [];
-          work.files.push({ url: asset.url, name: file.name });
+          queueWorkAsset(work, file);
         });
         state.dirty = true;
         renderAssetLists(work);
@@ -634,6 +640,17 @@
     return state.data?.works.find((work) => work.id === state.selectedId);
   }
 
+  function queueWorkAsset(work, file) {
+    const asset = queueFile(file);
+    if (isVideo(file) || isImage(file)) {
+      work.media ||= [];
+      work.media.push({ type: isVideo(file) ? "video" : "image", url: asset.url, caption: file.name });
+    } else {
+      work.files ||= [];
+      work.files.push({ url: asset.url, name: file.name });
+    }
+  }
+
   function queueFile(file) {
     if (file.size > MAX_FILE_SIZE) throw new Error(`“${file.name}”超过 50MB，请先压缩后再上传。`);
     const extension = file.name.includes(".") ? `.${file.name.split(".").pop().toLowerCase().replace(/[^a-z0-9]/g, "")}` : "";
@@ -809,7 +826,11 @@
   }
 
   function isVideo(file) {
-    return file.type.startsWith("video/") || /\.(mp4|webm|mov|m4v)$/i.test(file.name);
+    return file.type.startsWith("video/") || /\.(mp4|webm|mov|m4v|ogv)$/i.test(file.name);
+  }
+
+  function isImage(file) {
+    return file.type.startsWith("image/") || /\.(avif|gif|jpe?g|png|svg|webp)$/i.test(file.name);
   }
 
   function encodePath(path) {

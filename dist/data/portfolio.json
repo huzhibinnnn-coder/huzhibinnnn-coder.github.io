@@ -65,22 +65,24 @@
           "type": "image",
           "url": "assets/upload-1795052781164-1lue6qf.png",
           "caption": "AE工程图.png"
-        }
-      ],
-      "files": [
+        },
         {
+          "type": "video",
           "url": "assets/upload-1795052216926-1ad859.mp4",
-          "name": "PicToon_A1.mp4"
+          "caption": "PicToon_A1.mp4"
         },
         {
+          "type": "video",
           "url": "assets/upload-1795052216926-1o8p9l4.mp4",
-          "name": "PicToon_B1.mp4"
+          "caption": "PicToon_B1.mp4"
         },
         {
+          "type": "video",
           "url": "assets/upload-1795052216926-llaofw.mp4",
-          "name": "PicToon_C1.mp4"
+          "caption": "PicToon_C1.mp4"
         }
       ],
+      "files": [],
       "order": 0
     },
     {
